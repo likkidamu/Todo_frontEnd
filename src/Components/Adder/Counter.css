@@ -1,0 +1,38 @@
+
+.CounterButton {
+    font-size:20px;
+    color:White;
+    background-color:Tomato;
+    padding:15px;
+    margin: 10px;
+    border-radius:10px;
+    border-color: black;
+}
+.ResetButton {
+    font-size:20px;
+    color:White;
+    background-color:rgb(23, 2, 99);
+    padding:15px;
+    margin: 10px;
+    border-radius:10px;
+    border-color: black;
+
+}
+/* .Count{
+    font-size:50px;
+    color:black;
+    margin:20px;
+    border-radius:9px;
+    margin-left: auto;
+    margin-right: auto;
+} */
+.totalCount{
+    font-size:90px;
+    color:rgb(2, 124, 135);
+    margin:20px;
+    border-radius:9px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    width: 100px;
+}
