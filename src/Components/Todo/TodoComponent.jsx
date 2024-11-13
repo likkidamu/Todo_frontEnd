@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { useAuth } from "./security/Auth";
-import { AddTodo, retrieveTodo, UpdateTodo } from "./Retrieve"
+import { AddTodo, retrieveTodo, UpdateTodo } from "./Api/Retrieve"
 import { useEffect, useState } from "react";
 import { Formik,Form, Field, ErrorMessage} from "formik";
 export default function TodoComponent(){
@@ -13,7 +13,7 @@ export default function TodoComponent(){
         retrieveTodoForUpdate();
     }, [id]);
     function retrieveTodoForUpdate(){
-        if(id!==-1){
+        if(id!=-1){
         retrieveTodo( Authcontext.username,id)  
             .then((response) => {
                 setDescription(response.data.description); 
@@ -35,16 +35,29 @@ export default function TodoComponent(){
             description:values.description,
             targetDate:values.targetDate
         }
-        const todoAction = id === -1 ? AddTodo : UpdateTodo;
-        todoAction(Authcontext.username, id, todo)
+        if(id!=-1){
+        UpdateTodo(Authcontext.username,id,todo)
             .then((response) => {
-                console.log("Response from server:", response);
-                navigate('/todos');
+                console.log("in Update")
+                console.log(response)
+                navigate('/todos')
             })
-            .catch((error) => {
-                console.error("Error during todo action:", error);
+            .catch((error) =>{
+                console.error(error);  
             })
             .finally(() => console.log("cleanup"));
+        }
+        if(id==-1){
+        AddTodo(Authcontext.username,todo)
+            .then((response) => {
+                console.log(response)
+                navigate('/todos')
+            })
+            .catch((error) =>{
+                console.error(error);  
+            })
+            .finally(() => console.log("cleanup"));
+        }
     }
     function onValid(values){
         let errors = {};

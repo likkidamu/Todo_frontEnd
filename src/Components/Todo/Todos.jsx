@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { retrieveTodos } from "./Retrieve";
-import { deleteTodo } from "./Retrieve";
+import { retrieveTodos } from "./Api/Retrieve";
+import { deleteTodo } from "./Api/Retrieve";
 import { useAuth } from "./security/Auth";
 import { useNavigate } from "react-router-dom";
 export default function Todos(){
@@ -43,7 +43,7 @@ export default function Todos(){
     }
     return (
         <div className="container">
-        <h1>These are Your Todos</h1>
+        <h1>TASK MANAGER</h1>
         <div className="table-responsive">
             <table className="table table-bordered table-striped table-hover">
                 <thead className="thead-dark">

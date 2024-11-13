@@ -7,8 +7,8 @@ export default function Login(){
     const [loginFailed, setLoginFailed] = useState(false);
     const navigate = useNavigate();
     const  Authcontext = useAuth();
-    function HandleButton(){
-        if( Authcontext.Authentication(username,password)){
+    async function HandleButton(){
+        if( await Authcontext.Authentication(username,password)){
             navigate (`/welcome/${username}`)
         }
         else{
